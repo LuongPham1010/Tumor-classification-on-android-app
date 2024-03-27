@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="188dp"
+        android:layout_height="194dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/pred1"
+        tools:srcCompat="@drawable/pred1" />
+
+    <Button
+        android:id="@+id/select"
+        android:layout_width="188dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="64dp"
+        android:text="SELECT"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/predict"
+        android:layout_width="205dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="84dp"
+        android:text="PREDICT"
+        app:layout_constraintEnd_toEndOf="@+id/select"
+        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintStart_toStartOf="@+id/select"
+        app:layout_constraintTop_toBottomOf="@+id/select" />
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="308dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="64dp"
+        android:text="OUTPUT"
+        app:layout_constraintEnd_toEndOf="@+id/predict"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/predict"
+        app:layout_constraintTop_toBottomOf="@+id/predict" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
