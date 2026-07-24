@@ -1,76 +1,73 @@
-🧠 Brain Tumor Classification - Android App
+# 🧠 Brain Tumor Classification - Android App
 
-Dự án này là một ứng dụng Android sử dụng công nghệ Học máy (Machine Learning) để nhận diện và phân loại u não dựa trên hình ảnh chụp cộng hưởng từ (MRI). Ứng dụng được thiết kế nhằm mục đích nghiên cứu, học thuật và demo khả năng tích hợp mô hình AI trực tiếp lên thiết bị di động (On-device AI).
+Ứng dụng Android sử dụng **Học máy (Machine Learning)** để nhận diện và phân loại u não dựa trên hình ảnh chụp cộng hưởng từ (MRI). Ứng dụng được xây dựng nhằm mục đích **nghiên cứu, học thuật** và trình diễn khả năng tích hợp mô hình AI trực tiếp lên thiết bị di động (**On-device AI**).
 
-✨ Tính năng chính
+---
 
-Tải ảnh từ thư viện (Gallery): Người dùng có thể dễ dàng chọn các bức ảnh MRI đã được lưu sẵn trong thiết bị.
+## ✨ Tính năng chính
 
-Chụp ảnh trực tiếp (Camera): Hỗ trợ sử dụng camera của điện thoại để chụp lại phim/ảnh MRI và phân tích ngay lập tức.
+- **📁 Tải ảnh từ thư viện (Gallery)** — Người dùng có thể dễ dàng chọn các bức ảnh MRI đã được lưu sẵn trong thiết bị.
+- **📷 Chụp ảnh trực tiếp (Camera)** — Hỗ trợ sử dụng camera của điện thoại để chụp lại phim/ảnh MRI và phân tích ngay lập tức.
+- **⚡ Xử lý ngoại tuyến (Offline Inference)** — Mô hình AI được nhúng trực tiếp vào ứng dụng, cho phép nhận diện và phân loại khối u trong thời gian thực mà không cần kết nối Internet, đảm bảo tính bảo mật và riêng tư cho dữ liệu người dùng.
+- **🖥️ Giao diện trực quan** — Giao diện đơn giản, thân thiện, trả về kết quả dự đoán (*Prediction*) và độ tin cậy (*Confidence Score*) một cách rõ ràng, dễ hiểu.
 
-Xử lý ngoại tuyến (Offline Inference): Mô hình AI được nhúng trực tiếp vào ứng dụng, cho phép nhận diện và phân loại khối u trong thời gian thực mà không yêu cầu kết nối Internet. Đảm bảo tính bảo mật và riêng tư cho dữ liệu người dùng.
+---
 
-Giao diện trực quan: Giao diện đơn giản, thân thiện, trả về kết quả dự đoán (Prediction) và độ tin cậy (Confidence Score) một cách rõ ràng và dễ hiểu.
+## 🛠 Công nghệ và công cụ sử dụng
 
-🛠 Công nghệ và Công cụ sử dụng
+| Thành phần | Công nghệ |
+|---|---|
+| Ngôn ngữ lập trình | Java |
+| Môi trường phát triển | Android Studio |
+| AI Core | TensorFlow Lite (TFLite) |
+| Hệ thống Build | Gradle (Kotlin DSL - `build.gradle.kts`) |
 
-Ngôn ngữ lập trình: Java
+---
 
-Môi trường phát triển: Android Studio
+## 📦 Cấu trúc dự án
 
-Trí tuệ nhân tạo (Core AI): TensorFlow Lite (TFLite) để chạy mô hình Deep Learning trên thiết bị di động một cách mượt mà.
+```
+app/src/main/java/com/example/braintumordemoapp/  → Mã nguồn Java: logic giao diện, xử lý luồng ảnh, gọi mô hình AI (MainActivity.java)
+app/src/main/ml/                                   → Mô hình máy học đã huấn luyện, tối ưu cho thiết bị di động (model.tflite)
+app/src/main/res/                                  → Tài nguyên giao diện (layout, icon, màu sắc, chuỗi ngôn ngữ)
+build.gradle.kts                                   → Cấu hình dependencies và thông tin build
+```
 
-Hệ thống Build: Gradle (Kotlin DSL - build.gradle.kts)
+---
 
-📦 Cấu trúc dự án
+## 🚀 Hướng dẫn cài đặt và chạy thử
 
-Dưới đây là một số thành phần quan trọng trong mã nguồn của ứng dụng:
+### Yêu cầu hệ thống
 
-app/src/main/java/com/example/braintumordemoapp/: Chứa mã nguồn Java xử lý toàn bộ logic giao diện, xử lý luồng ảnh và gọi mô hình AI (MainActivity.java).
+- Đã cài đặt **Android Studio** (khuyến nghị phiên bản mới nhất)
+- Máy ảo Android (**Emulator**) hoặc thiết bị Android thật chạy **Android 6.0 (API level 23)** trở lên
 
-app/src/main/ml/: Thư mục chứa mô hình máy học đã được huấn luyện và tối ưu hóa riêng cho thiết bị di động (model.tflite).
+### Các bước thực hiện
 
-app/src/main/res/: Chứa các tài nguyên giao diện (UI resources) như layout (activity_main.xml), hình ảnh icon, màu sắc và chuỗi ngôn ngữ.
+1. Clone repository về máy tính của bạn:
 
-build.gradle.kts: Các tệp cấu hình dependencies và thông tin build của ứng dụng.
+   ```bash
+   git clone https://github.com/luongpham1010/tumor-classification-on-android-app.git
+   ```
 
-🚀 Hướng dẫn cài đặt và chạy thử
+2. Mở **Android Studio**.
+3. Chọn **File > Open** và điều hướng đến thư mục `BrainTumorDemoApp` vừa tải về.
+4. Đợi Android Studio hoàn tất tải các thư viện (dependencies) và đồng bộ (sync) Gradle.
+5. Kết nối điện thoại Android qua cáp USB (đảm bảo đã bật **USB Debugging** trong Tùy chọn nhà phát triển) hoặc khởi động máy ảo (AVD).
+6. Nhấn nút **Run** (biểu tượng tam giác màu xanh) hoặc nhấn **Shift + F10** để build và cài đặt ứng dụng lên thiết bị.
 
-Để chạy dự án này trên môi trường phát triển cục bộ (Local) của bạn, vui lòng làm theo các bước sau:
+---
 
-Yêu cầu hệ thống:
+## 🧠 Thông tin về mô hình AI
 
-Đã cài đặt Android Studio (khuyến nghị phiên bản mới nhất).
+- Mô hình học sâu (Deep Learning) được huấn luyện trước (pre-trained) trên một tập dữ liệu lớn các hình ảnh MRI về u não.
+- Mô hình được chuyển đổi sang chuẩn **`.tflite`** (TensorFlow Lite) để tối ưu về dung lượng file và tốc độ xử lý (inference speed) trên vi xử lý ARM/Mobile.
+- Mô hình được nhúng và liên kết tự động thông qua tính năng **ML Model Binding** tích hợp sẵn của Android Studio, giúp việc gọi model từ mã Java trở nên gọn nhẹ.
 
-Máy ảo Android (Emulator) hoặc thiết bị Android thật chạy hệ điều hành Android 6.0 (API level 23) trở lên.
+---
 
-Các bước thực hiện:
+## ⚠️ Tuyên bố miễn trừ trách nhiệm y tế
 
-Clone Repository về máy tính của bạn:
-
-git clone https://github.com/luongpham1010/tumor-classification-on-android-app.git
-
-
-Mở Android Studio.
-
-Chọn File > Open và điều hướng đến thư mục BrainTumorDemoApp vừa tải về.
-
-Đợi Android Studio hoàn tất việc tải các thư viện (dependencies) và đồng bộ (sync) Gradle.
-
-Kết nối điện thoại Android của bạn qua cáp USB (đảm bảo đã bật chế độ USB Debugging trong Tùy chọn nhà phát triển) hoặc khởi động máy ảo (AVD).
-
-Nhấn nút Run (biểu tượng tam giác màu xanh) trên thanh công cụ hoặc nhấn tổ hợp phím Shift + F10 để build và cài đặt ứng dụng lên thiết bị.
-
-🧠 Thông tin về Mô hình AI (Model)
-
-Mô hình học sâu (Deep Learning) được huấn luyện trước (pre-trained) trên một tập dữ liệu lớn các hình ảnh MRI về u não.
-
-Định dạng ban đầu của mô hình đã được chuyển đổi sang chuẩn .tflite (TensorFlow Lite) để tối ưu hóa về dung lượng file và tốc độ xử lý (inference speed) trên vi xử lý của các thiết bị ARM/Mobile.
-
-Mô hình được nhúng và liên kết tự động thông qua tính năng ML Model Binding tích hợp sẵn của Android Studio, giúp việc gọi model từ mã Java trở nên cực kỳ gọn nhẹ.
-
-⚠️ Tuyên bố miễn trừ trách nhiệm y tế (Medical Disclaimer)
-
-Mô hình trí tuệ nhân tạo và ứng dụng này CHỈ MANG TÍNH CHẤT DEMO VÀ PHỤC VỤ MỤC ĐÍCH HỌC THUẬT/NGHIÊN CỨU.
-
-Ứng dụng này không phải là một thiết bị y tế được chứng nhận và không được phép sử dụng để thay thế cho các chẩn đoán y khoa chuyên nghiệp, tư vấn, hoặc phương pháp điều trị của các bác sĩ, chuyên gia y tế có chuyên môn. Mọi quyết định liên quan đến sức khỏe và chẩn đoán bệnh lý cần phải được thực hiện và thông qua sự thăm khám tại các cơ sở y tế hợp pháp. Tác giả không chịu trách nhiệm cho bất kỳ quyết định y tế nào được đưa ra dựa trên kết quả của ứng dụng này.
+> Mô hình trí tuệ nhân tạo và ứng dụng này **chỉ mang tính chất demo và phục vụ mục đích học thuật/nghiên cứu**.
+>
+> Ứng dụng **không phải là một thiết bị y tế được chứng nhận** và không được phép sử dụng để thay thế cho chẩn đoán y khoa chuyên nghiệp, tư vấn hoặc phương pháp điều trị của bác sĩ, chuyên gia y tế có chuyên môn. Mọi quyết định liên quan đến sức khỏe và chẩn đoán bệnh lý cần được thực hiện và thông qua sự thăm khám tại các cơ sở y tế hợp pháp. Tác giả không chịu trách nhiệm cho bất kỳ quyết định y tế nào được đưa ra dựa trên kết quả của ứng dụng này.
