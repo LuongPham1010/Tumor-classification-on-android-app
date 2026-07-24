@@ -6,10 +6,11 @@
 
 ## ✨ Tính năng chính
 
-- **📁 Tải ảnh từ thư viện (Gallery)** — Người dùng có thể dễ dàng chọn các bức ảnh MRI đã được lưu sẵn trong thiết bị.
-- **📷 Chụp ảnh trực tiếp (Camera)** — Hỗ trợ sử dụng camera của điện thoại để chụp lại phim/ảnh MRI và phân tích ngay lập tức.
-- **⚡ Xử lý ngoại tuyến (Offline Inference)** — Mô hình AI được nhúng trực tiếp vào ứng dụng, cho phép nhận diện và phân loại khối u trong thời gian thực mà không cần kết nối Internet, đảm bảo tính bảo mật và riêng tư cho dữ liệu người dùng.
-- **🖥️ Giao diện trực quan** — Giao diện đơn giản, thân thiện, trả về kết quả dự đoán (*Prediction*) và độ tin cậy (*Confidence Score*) một cách rõ ràng, dễ hiểu.
+- **📁 Tải ảnh từ thư viện (Gallery)** — Người dùng chọn ảnh MRI đã có sẵn trong thiết bị để đưa vào ứng dụng phân tích.
+- **⚡ Xử lý ngoại tuyến (Offline Inference)** — Mô hình AI được nhúng trực tiếp vào ứng dụng, cho phép nhận diện và phân loại khối u mà không cần kết nối Internet, đảm bảo tính bảo mật và riêng tư cho dữ liệu người dùng.
+- **🖥️ Giao diện trực quan** — Giao diện đơn giản, thân thiện, gồm nút chọn ảnh và nút dự đoán (Predict), trả về nhãn phân loại rõ ràng, dễ hiểu.
+
+> ℹ️ **Lưu ý:** Phiên bản hiện tại của mã nguồn **chưa hỗ trợ chụp ảnh trực tiếp bằng Camera** — ứng dụng chỉ nhận ảnh thông qua việc chọn từ thư viện thiết bị (`Intent.ACTION_GET_CONTENT`). Đây là hướng phát triển có thể bổ sung trong tương lai.
 
 ---
 
@@ -32,6 +33,13 @@ app/src/main/ml/                                   → Mô hình máy học đã
 app/src/main/res/                                  → Tài nguyên giao diện (layout, icon, màu sắc, chuỗi ngôn ngữ)
 build.gradle.kts                                   → Cấu hình dependencies và thông tin build
 ```
+
+### Luồng hoạt động chính (MainActivity.java)
+
+1. Người dùng nhấn nút **Select** → mở trình chọn ảnh từ thư viện (`ACTION_GET_CONTENT`, kiểu `image/*`).
+2. Ảnh được lấy về dưới dạng `Bitmap` và hiển thị lên `ImageView`.
+3. Người dùng nhấn nút **Predict** → ảnh được resize về `150x150`, đưa vào mô hình TFLite (`Model.newInstance`) để suy luận.
+4. Kết quả được ánh xạ sang 1 trong 4 nhãn: `glioma`, `meningioma`, `no tumor`, `pituitary` và hiển thị lên màn hình.
 
 ---
 
@@ -63,6 +71,16 @@ build.gradle.kts                                   → Cấu hình dependencies 
 - Mô hình học sâu (Deep Learning) được huấn luyện trước (pre-trained) trên một tập dữ liệu lớn các hình ảnh MRI về u não.
 - Mô hình được chuyển đổi sang chuẩn **`.tflite`** (TensorFlow Lite) để tối ưu về dung lượng file và tốc độ xử lý (inference speed) trên vi xử lý ARM/Mobile.
 - Mô hình được nhúng và liên kết tự động thông qua tính năng **ML Model Binding** tích hợp sẵn của Android Studio, giúp việc gọi model từ mã Java trở nên gọn nhẹ.
+- Ảnh đầu vào được resize về kích thước `150x150x3` trước khi đưa vào mô hình.
+- Đầu ra là 1 trong 4 lớp: `glioma`, `meningioma`, `no tumor`, `pituitary`.
+
+---
+
+## 🗺️ Hướng phát triển tiếp theo (Roadmap)
+
+- [ ] Bổ sung chức năng chụp ảnh trực tiếp bằng Camera
+- [ ] Hiển thị độ tin cậy (Confidence Score) kèm theo kết quả dự đoán
+- [ ] Cải thiện giao diện người dùng (UI/UX)
 
 ---
 
